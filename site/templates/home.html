@@ -1,0 +1,71 @@
+<section class="hero wrap">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="status-dot"></span> ML SYSTEMS ENGINEERING</p>
+    <h1>ML systems.<br>Infrastructure.<br><em>Agents.</em></h1>
+    <div class="hero-introduction"><img src="/images/profile-portrait.png" alt="Tarun Ajjarapu" width="1062" height="1480" fetchpriority="high"><p class="hero-description">I’m Tarun Ajjarapu. I build infrastructure and agent systems at Judgment Labs. Previously, log delivery at Databricks and payments at Stripe.</p></div>
+    <div class="hero-actions">
+      <a class="button" href="/videos/">Videos <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/writing/">Technical writing <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="hero-footnote">Memory · Concurrency · Inference</p>
+  </div>
+  <section class="memory-panel" id="memory" aria-labelledby="memory-title">
+    <div class="memory-chrome"><span><span class="memory-mark" aria-hidden="true">▦</span> ADDRESS SPACE</span><div class="memory-controls"><span class="memory-mode" aria-hidden="true">STATIC</span><button class="memory-motion" type="button" aria-label="Pause memory animation" title="Pause memory animation" hidden><svg class="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10"/></svg><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 7 5-7 5Z"/></svg></button></div></div>
+    <div class="memory-heading"><h2 id="memory-title">Virtual → physical.</h2><span>MODEL / 4 KiB PAGES</span></div>
+    <p class="memory-description">A virtual-memory map of this site.</p>
+    <div class="memory-board">
+      <svg class="memory-wires" aria-hidden="true"><path class="memory-wire" data-wire="in"/><path class="memory-wire" data-wire="out"/></svg>
+      <div class="memory-bank memory-virtual"><p class="memory-bank-label">VIRTUAL PAGES</p><div class="memory-pages" role="group" aria-label="Select a virtual page">
+        <button class="memory-page" type="button" data-page="0" aria-pressed="false" aria-label="Map home, virtual page 00"><span class="memory-index">00</span><span>/home</span><i aria-hidden="true">↗</i></button>
+        <button class="memory-page" type="button" data-page="1" aria-pressed="false" aria-label="Map writing, virtual page 01"><span class="memory-index">01</span><span>/writing</span><i aria-hidden="true">↗</i></button>
+        <button class="memory-page" type="button" data-page="2" aria-pressed="true" aria-label="Map about, virtual page 02"><span class="memory-index">02</span><span>/about</span><i aria-hidden="true">↗</i></button>
+        <button class="memory-page" type="button" data-page="3" aria-pressed="false" aria-label="Map videos, virtual page 03"><span class="memory-index">03</span><span>/videos</span><i aria-hidden="true">↗</i></button>
+      </div></div>
+      <div class="memory-pte" aria-label="Page table entry"><span>PAGE TABLE</span><strong><span data-vpn>02</span><i aria-hidden="true">→</i><span data-pfn>05</span></strong><span class="memory-present">PRESENT</span></div>
+      <div class="memory-bank memory-physical"><p class="memory-bank-label">PHYSICAL FRAMES</p><div class="memory-frames">
+        <div class="memory-frame" data-frame="0"><span class="memory-index">00</span><span>/writing</span></div>
+        <div class="memory-frame memory-unused" data-frame="1"><span class="memory-index">01</span><span aria-label="Unmapped frame"></span></div>
+        <div class="memory-frame" data-frame="2"><span class="memory-index">02</span><span>/videos</span></div>
+        <div class="memory-frame" data-frame="3"><span class="memory-index">03</span><span>/home</span></div>
+        <div class="memory-frame memory-unused" data-frame="4"><span class="memory-index">04</span><span aria-label="Unmapped frame"></span></div>
+        <div class="memory-frame is-active" data-frame="5"><span class="memory-index">05</span><span>/about</span></div>
+      </div></div>
+    </div>
+    <div class="memory-addresses" aria-label="Address translation"><div><span class="memory-field-label">VIRTUAL ADDRESS</span><code>0x<span data-va-page>00002</span><span class="memory-offset-bits" data-offset-bits>2A0</span></code></div><span class="memory-address-arrow" aria-hidden="true">→</span><div><span class="memory-field-label">PHYSICAL ADDRESS</span><code>0x<span data-pa-page>00005</span><span class="memory-offset-bits" data-offset-bits>2A0</span></code></div></div>
+    <div class="memory-offset-control"><label for="memory-offset">OFFSET <output for="memory-offset" data-offset-value>+0x2A0</output></label><input id="memory-offset" type="range" min="0" max="4095" value="672" aria-valuetext="672 bytes, hexadecimal 2A0"><span class="memory-offset-note">12 bits, unchanged</span></div>
+    <div class="memory-footer"><span>Select a page. Follow the mapping.</span><a class="memory-destination" href="/about/">Open /about <span aria-hidden="true">↗</span></a></div>
+    <p class="sr-only" id="memory-status" role="status"></p>
+  </section>
+</section>
+<div class="current-chapter wrap">
+  <div class="chapter-label"><span class="status-dot"></span> CURRENTLY</div>
+  <div class="chapter-role"><strong>Member of Technical Staff</strong><span>at Judgment Labs</span></div>
+  <div class="chapter-detail">Infrastructure &amp; Agents<span>Since September 2026</span></div>
+  <a href="/about/#experience" class="circle-link" aria-label="Read about my experience">↗</a>
+</div>
+<section class="section wrap" id="notebook">
+  <div class="section-heading">
+    <div><p class="eyebrow muted">01 / WRITING</p><h2>Technical notes.</h2><p>Implementation details, experiments, and engineering tradeoffs.</p></div>
+    <a class="text-link" href="/writing/">All writing <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="notebook-grid">
+    <a class="notebook-cover" href="$featured_href">
+      <div class="cover-top"><span>$featured_label</span><span>$featured_meta</span></div>
+      <div class="cover-center"><span class="code-mark" aria-hidden="true">[ _ ]</span><h3>$featured_title</h3></div>
+      <div class="cover-bottom"><span>$featured_footer</span><span class="cover-arrow" aria-hidden="true">↗</span></div>
+    </a>
+    <div class="topic-list">
+      <a class="topic-row" href="/writing/?topic=Systems"><div><span class="topic-tag">SYSTEMS</span><h3>Systems programming</h3><p>Memory, concurrency, networking, and distributed systems.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+      <a class="topic-row" href="/writing/?topic=ML"><div><span class="topic-tag">MACHINE LEARNING</span><h3>ML infrastructure</h3><p>Inference, reinforcement learning, and agent runtimes.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+      <a class="topic-row" href="/writing/?topic=Notes"><div><span class="topic-tag">NOTES</span><h3>Engineering notes</h3><p>Code, benchmarks, and implementation tradeoffs.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+<section class="video-feature wrap">
+  <div class="video-feature-copy"><p class="eyebrow muted">02 / THE YOUTUBE CHANNEL</p><h2 class="channel-wordmark">$channel_name<span class="channel-period">.</span></h2></div>
+  <div class="video-feature-detail"><p class="video-status">$youtube_home_status</p><p>Technical breakdowns of operating systems, low-level code, and ML infrastructure. Following execution from source to runtime.</p><a class="text-link" href="/videos/">Explore the channel <span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="section wrap more-than-code">
+  <div><p class="eyebrow muted">03 / BACKGROUND</p><h2>Infrastructure.<br><em>In production.</em></h2><a class="text-link" href="/about/">Background &amp; experience <span aria-hidden="true">↗</span></a></div>
+  <div><p>My work spans multi-cloud log delivery, payment workflows, and agent infrastructure. The recurring problems: concurrency, durability, and observability.</p><p>B.S. Computer Science, UT Austin. Projects in Rust, C, and C++.</p></div>
+</section>

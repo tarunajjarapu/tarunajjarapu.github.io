@@ -1,0 +1,40 @@
+<section class="channel-hero wrap">
+  <div class="channel-intro">
+    <p class="eyebrow"><span class="status-dot"></span> EXPLANATORY VIDEOS BY TARUN AJJARAPU</p>
+    <h1 class="channel-wordmark">$channel_name<span class="channel-period">.</span></h1>
+    <p class="channel-tagline">$channel_tagline</p>
+    <p class="channel-description">Operating systems, low-level code, and ML infrastructure. Detailed explanations grounded in source code and execution.</p>
+    <div class="hero-actions">$video_link<a class="text-link" href="/writing/">Technical writing <span aria-hidden="true">↗</span></a></div>
+    <p class="hero-footnote">$channel_aside</p>
+  </div>
+  <div class="curiosity-map" role="img" aria-label="The process: read the source, trace execution, measure behavior, explain the system.">
+    <div class="curiosity-chrome" aria-hidden="true"><span>systems.trace</span><span>↳</span></div>
+    <div class="curiosity-body" aria-hidden="true">
+      <span class="curiosity-caption">FROM SOURCE TO EXECUTION</span>
+      <div class="curiosity-step"><span>01</span><p>Read the source.</p></div>
+      <div class="curiosity-step"><span>02</span><p>Trace execution.</p></div>
+      <div class="curiosity-step"><span>03</span><p>Measure behavior.</p></div>
+      <div class="curiosity-step curiosity-loop"><span>↳</span><p>Explain the system.</p></div>
+      <span class="curiosity-caption curiosity-bottom">CODE. STATE. FAILURE MODES.</span>
+    </div>
+  </div>
+</section>
+
+<div class="channel-status wrap"><span class="soon-pill"><span class="status-dot"></span> $video_status</span><p>$video_message</p></div>
+
+$published_videos
+
+<section class="channel-topics wrap" id="rabbit-holes" aria-labelledby="rabbit-holes-title">
+  <div class="section-heading"><div><p class="eyebrow muted">PLANNED TOPICS</p><h2 id="rabbit-holes-title">Systems, in detail.</h2><p>Topics for upcoming technical breakdowns.</p></div><span class="topic-list-note">OS / SYSTEMS / ML</span></div>
+  <article class="first-topic">
+    <div class="first-topic-label"><span class="eyebrow">FIRST TOPIC</span><span class="topic-monogram" aria-hidden="true">{ nix }</span><span class="topic-tag">OPERATING SYSTEMS</span></div>
+    <div class="first-topic-copy"><h3>NixOS: configuration to system.</h3><p>Trace a configuration change through evaluation, builds, and system activation. Examine dependencies, generations, and the limits of rollback.</p><div class="topic-tags"><span>Dependencies</span><span>System generations</span><span>Mutable state</span></div><a class="text-link" href="https://nixos.org/guides/how-nix-works/" target="_blank" rel="noopener noreferrer">How Nix works <span aria-hidden="true">↗</span></a></div>
+  </article>
+  <div class="rabbit-hole-list">
+    <details class="rabbit-hole"><summary><span class="rabbit-hole-category">OS / PROCESSES</span><span class="rabbit-hole-title">From executable to process.</span><span class="disclosure-icon" aria-hidden="true">+</span></summary><div class="rabbit-hole-body"><p>Follow the shell, loader, and process initialization before execution reaches <code>main</code>.</p><span class="topic-tag">PLANNED</span></div></details>
+    <details class="rabbit-hole"><summary><span class="rabbit-hole-category">SYSTEMS / PERFORMANCE</span><span class="rabbit-hole-title">Concurrency and contention.</span><span class="disclosure-icon" aria-hidden="true">+</span></summary><div class="rabbit-hole-body"><p>Benchmark a concurrent program as the worker count increases. Examine cache lines, synchronization, and scaling limits.</p><span class="topic-tag">PLANNED</span></div></details>
+    <details class="rabbit-hole"><summary><span class="rabbit-hole-category">ML / INFERENCE</span><span class="rabbit-hole-title">The inference path.</span><span class="disclosure-icon" aria-hidden="true">+</span></summary><div class="rabbit-hole-body"><p>Trace a request through an inference server: compute, memory movement, scheduling, and time spent waiting.</p><span class="topic-tag">PLANNED</span></div></details>
+  </div>
+</section>
+
+<section class="channel-about wrap"><div><p class="eyebrow muted">BACKGROUND</p><h2>Tarun Ajjarapu.</h2></div><div><p>I work on infrastructure and agents at Judgment Labs. Previously, I built log delivery infrastructure at Databricks and worked on payments at Stripe.</p><p>This channel covers systems programming, operating systems, and ML infrastructure.</p><a class="text-link" href="/about/">Experience &amp; projects <span aria-hidden="true">↗</span></a></div></section>

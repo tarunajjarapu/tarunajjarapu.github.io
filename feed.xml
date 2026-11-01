@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>Tarun’s notebook</title>
+    <link>https://tarunajjarapu.github.io/writing/</link>
+    <description>Tarun Ajjarapu — ML systems engineer working on infrastructure and agents at Judgment Labs. Technical writing and videos on systems software and ML infrastructure.</description>
+    <language>en-us</language>
+  </channel>
+</rss>

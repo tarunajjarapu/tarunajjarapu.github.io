@@ -1,0 +1,6 @@
+Asset: images/profile-portrait.png
+Input: the user-supplied profile.jpg group photograph
+Method: built-in ImageGen, image edit mode
+
+Final prompt:
+Use case: identity-preserve. Edit target: the supplied 1536 x 2048 photograph. Make ONLY a tight rectangular portrait crop of the young man on the LEFT, excluding the man on the right completely. Desired crop is approximately original-image coordinates x=100 through x=710, y=900 through y=1750, a portrait aspect ratio of 610:850. Include the left man's entire hair, head, neck, and upper chest in his existing dark navy sweatshirt. Keep exactly his original face, expression, skin texture, hair, clothes, pose, lighting, colors, and existing background. This is for his personal website profile. Do not beautify, retouch, reinterpret, redraw, stylize, replace background, add objects, or change his identity. Do not include any part of the right man's face, body, or hair. No text, border, vignette, or graphic. Return the cropped photograph.
