@@ -5,5 +5,13 @@
     <link>https://tarunajjarapu.github.io/writing/</link>
     <description>Tarun Ajjarapu — ML systems engineer working on infrastructure and agents at Judgment Labs. Technical writing and videos on systems software and ML infrastructure.</description>
     <language>en-us</language>
+    <item>
+      <title>Inside a modern LLM inference runtime</title>
+      <link>https://tarunajjarapu.github.io/writing/inside-an-inference-runtime/</link>
+      <guid>https://tarunajjarapu.github.io/writing/inside-an-inference-runtime/</guid>
+      <description>How vLLM turns requests into GPU work through continuous batching, KV-cache paging, and token scheduling.</description>
+      <category>ML</category>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
   </channel>
 </rss>

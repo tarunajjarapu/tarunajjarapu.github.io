@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="theme-color" content="#f6f3ec">
   <script src="/assets/js/theme.js"></script>
   <title>Writing — Tarun Ajjarapu</title>
   <meta name="description" content="Technical notes on operating systems, distributed infrastructure, and machine learning.">
@@ -18,16 +18,17 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Tarun's notebook" href="/feed.xml">
   <link rel="preload" href="/assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/search.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/memory.js" defer></script>
   <script src="/assets/js/terminal.js" defer></script>
 </head>
-<body>
+<body class="writing-index-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
-    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home"><span class="brand-symbol" aria-hidden="true">[t]</span> tarun ajjarapu<span class="brand-period">_</span></a>
-    <nav class="desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/writing/" aria-current="page">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a></nav>
+    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home">Tarun Ajjarapu<span class="brand-period" aria-hidden="true">.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="/" aria-current="page">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a></nav>
     <div class="header-controls">
       <button class="terminal-launch" type="button" aria-label="Focus terminal" aria-controls="terminal-dock" title="Focus terminal (⌘K / Ctrl+K)" hidden><span aria-hidden="true">&gt;_</span><kbd aria-hidden="true">⌘K</kbd></button>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
@@ -36,28 +37,59 @@
       </button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav"><span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Home</a><a href="/writing/" aria-current="page">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a><a href="https://www.linkedin.com/in/tarunajj/" target="_blank" rel="noopener noreferrer">Contact ↗</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="/" aria-current="page">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a><a href="https://www.linkedin.com/in/tarunajj/" target="_blank" rel="noopener noreferrer">Contact ↗</a></nav>
   </header>
-  <main id="main"><section class="page-intro wrap"><p class="eyebrow muted">WRITING</p><h1>Technical <em>notes.</em></h1><p>Operating systems, distributed infrastructure, and ML.<br class="desktop-break"> Code, experiments, and engineering tradeoffs.</p></section>
-<section class="writing-section wrap" aria-label="Articles"><div class="writing-toolbar"><div class="filters" role="group" aria-label="Filter writing by topic"><button type="button" class="filter active" data-topic="All" aria-pressed="true">All notes <span>0</span></button><button type="button" class="filter" data-topic="Systems" aria-pressed="false">Systems</button><button type="button" class="filter" data-topic="ML" aria-pressed="false">ML</button><button type="button" class="filter" data-topic="Notes" aria-pressed="false">Notes</button></div><a class="rss-link" href="/feed.xml">Follow via RSS ↗</a></div>
-<div class="posts-list"></div>
-<div class="writing-empty" ><div class="empty-notebook" aria-hidden="true"><svg viewBox="0 0 96 110"><path d="M26 12h54v87H26c-9 0-15-5-15-12V25c0-8 6-13 15-13Z"/><path d="M26 12v87M11 86c2-6 8-8 15-8h54M39 31h27M39 43h21M39 55h26"/><path class="pencil" d="m54 73 26-29 9 8-27 29-12 5Z"/></svg></div><p class="eyebrow muted">NO ENTRIES YET</p><h2 data-empty-title>No published notes yet.</h2><p data-empty-description>Upcoming: systems programming, ML infrastructure, and implementation notes.</p><a class="text-link" href="/videos/">Explore the channel <span aria-hidden="true">↗</span></a></div>
-<p class="filter-status sr-only" aria-live="polite"></p>
-</section>
-<aside class="writing-footnote wrap"><span class="little-star" aria-hidden="true">✳</span><p>Source code, measurements, and the tradeoffs behind the implementation.</p></aside>
+  <main id="main"><div class="blog-index wrap" data-blog-index>
+  <section class="author-intro" aria-labelledby="intro-title">
+    <p class="intro-label">A PERSONAL NOTEBOOK</p>
+    <h1 id="intro-title">Hi, I’m Tarun.</h1>
+    <p class="intro-description">I’m an engineer at Judgment Labs, working on infrastructure and agents. This is my notebook on ML systems, software, and what I’m learning.</p>
+    <a class="intro-link" href="/about/">More about me <span aria-hidden="true">↗</span></a>
+  </section>
+  <section class="writing-collection" id="writing" aria-labelledby="writing-title">
+  <div class="blog-heading">
+    <div class="writing-heading"><h2 id="writing-title">Latest writing</h2><a class="rss-link" href="/feed.xml">RSS <span aria-hidden="true">↗</span></a></div>
+  <form class="blog-search" role="search" aria-label="Search writing" hidden>
+    <label class="sr-only" for="blog-query">Search posts</label>
+    <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.5 12.5 4 4"/></svg>
+    <input id="blog-query" type="search" name="q" placeholder="Search the blog…" maxlength="160" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="search-hint" aria-controls="post-results">
+    <button class="search-clear" type="button" aria-label="Clear search" hidden>×</button>
+    <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+  </form>
+  </div>
+  <p class="search-hint sr-only" id="search-hint" hidden>Searches titles, full posts, and code. Press / to focus search.</p>
+  <div class="blog-toolbar">
+    <div class="filters" role="group" aria-label="Filter writing by topic" hidden>
+      <button type="button" class="filter active" data-topic="All" aria-pressed="true">All</button>
+      <button type="button" class="filter" data-topic="ML" aria-pressed="false">ML</button>
+      <button type="button" class="filter" data-topic="Systems" aria-pressed="false">Systems</button>
+      <button type="button" class="filter" data-topic="Notes" aria-pressed="false">Notes</button>
+    </div>
+    <p class="search-count" role="status" aria-live="polite" aria-atomic="true">1 post</p>
+  </div>
+  <div class="posts-list" id="post-results"><a class="post-row" href="/writing/inside-an-inference-runtime/" data-category="ML"><time datetime="2026-11-01">Nov 01, 2026</time><div class="post-copy"><h2>Inside a modern LLM inference runtime</h2><p>How vLLM turns requests into GPU work through continuous batching, KV-cache paging, and token scheduling.</p><span class="post-meta">ML <span aria-hidden="true">·</span> 6 min read</span><p class="post-match" hidden></p></div><span class="row-arrow" aria-hidden="true">↗</span></a></div>
+  <div class="blog-empty" hidden>
+    <h2 data-empty-title>No posts published yet.</h2>
+    <p data-empty-description>New posts will appear here. Follow via RSS to keep up.</p>
+    <button class="reset-search text-link" type="button" hidden>Clear search &amp; filters <span aria-hidden="true">↗</span></button>
+  </div>
+  <noscript><p class="search-hint">All published posts are listed above. Enable JavaScript to search and filter.</p></noscript>
+  </section>
+</div>
 </main>
   <aside id="terminal-dock" class="terminal-dock" aria-label="Site terminal" hidden>
   <div class="terminal wrap" data-terminal data-github="https://github.com/tarunajjarapu" data-linkedin="https://www.linkedin.com/in/tarunajj/">
     <div id="terminal-output-panel" class="terminal-output-panel" hidden>
       <div class="terminal-meta"><span>TERMINAL</span><span id="dock-hint" class="terminal-hint">Tab completes · ↑↓ history · Esc minimizes</span></div>
+      <p class="terminal-welcome">You can explore this site from here.</p>
       <div class="terminal-output" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" tabindex="0"></div>
-      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="help">help</button><button type="button" data-command="whoami">whoami</button><button type="button" data-command="ls writing">ls writing</button><button type="button" data-command="clear">clear</button></div>
+      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="ls"><code>ls</code><span>this page</span></button><button type="button" data-command="grep"><code>grep</code><span>search the blog</span></button><button type="button" data-command="about"><code>about</code><span>meet Tarun</span></button><button type="button" data-command="help"><code>help</code><span>all commands</span></button></div>
     </div>
     <form class="terminal-form" autocomplete="off">
       <span class="terminal-label" aria-hidden="true">&gt;_<span>terminal</span></span>
       <label class="sr-only" for="dock-command">Terminal command</label>
       <span class="terminal-path" aria-hidden="true">~</span><span class="terminal-prompt" aria-hidden="true">❯</span>
-      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="help / about / writing / videos" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
+      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="Try help, ls, or grep <text>" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
       <button class="terminal-run" type="submit" aria-label="Run command" title="Run command">↵</button>
       <kbd class="terminal-shortcut" aria-hidden="true">⌘K / Ctrl K</kbd>
       <button class="terminal-expand" type="button" aria-label="Expand terminal output" aria-expanded="false" aria-controls="terminal-output-panel"><span class="terminal-expand-label">Index</span><span class="terminal-chevron" aria-hidden="true">⌃</span></button>

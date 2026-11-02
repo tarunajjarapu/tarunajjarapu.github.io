@@ -40,6 +40,11 @@ class PublishingTests(unittest.TestCase):
         self.source = Path(self.temp.name) / "source"
         self.output = Path(self.temp.name) / "public"
         shutil.copytree(ROOT / "site", self.source)
+        # Publishing fixtures stay independent of the real blog's growing catalog.
+        # Keep the reusable draft so every build exercises its exclusion.
+        for post in (self.source / "posts").glob("*.md"):
+            if post.name != "_template.md":
+                post.unlink()
         source_patch = patch.object(builder, "SOURCE", self.source)
         source_patch.start()
         self.addCleanup(source_patch.stop)
@@ -73,9 +78,12 @@ let answer = 42;
         self.post("future-note", published="2027-01-01")
         self.build()
         self.assertEqual([], ET.parse(self.output / "feed.xml").findall("channel/item"))
-        self.assertFalse((self.output / "writing/first-note/index.html").exists())
+        self.assertFalse((self.output / "writing/your-next-post/index.html").exists())
         self.assertFalse((self.output / "writing/future-note/index.html").exists())
         self.assertEqual({"posts": []}, json.loads((self.output / "site-index.json").read_text()))
+        self.assert_internal_links_resolve()
+
+    def assert_internal_links_resolve(self):
         for path in self.output.rglob("*.html"):
             document = Links()
             document.feed(path.read_text())
@@ -92,6 +100,34 @@ let answer = 42;
                     linked.feed(target.read_text())
                     self.assertIn(url.fragment, linked.ids, f"{path.name}: broken anchor {link}")
 
+    def test_inference_post_and_reusable_template_publishing_workflow(self):
+        shutil.copy(ROOT / "site/posts/inside-an-inference-runtime.md", self.source / "posts")
+        self.build()
+        article = self.output / "writing/inside-an-inference-runtime/index.html"
+        self.assertTrue(article.is_file())
+        self.assertIn('class="toc"', article.read_text())
+        self.assertIn('class="article-flow"', article.read_text())
+        self.assert_internal_links_resolve()
+        posts = json.loads((self.output / "site-index.json").read_text())["posts"]
+        self.assertEqual(["inside-an-inference-runtime"], [post["slug"] for post in posts])
+        self.assertIn("PagedAttention", posts[0]["text"])
+        self.assertEqual(1, posts[0]["text"].count("Give the KV cache a page table"))
+        self.assertNotIn("In this post", posts[0]["text"])
+        self.assertNotIn("your-next-post", (self.output / "sitemap.xml").read_text())
+
+        # An unchanged copy is still a draft; publishing the copy gives it the theme
+        # and all indexes without exposing the original template.
+        template = self.source / "posts/_template.md"
+        copy = self.source / "posts/second-post.md"
+        copy.write_text(template.read_text().replace("slug: your-next-post", "slug: second-post"))
+        self.build()
+        self.assertFalse((self.output / "writing/second-post/index.html").exists())
+        copy.write_text(copy.read_text().replace("draft: true", "draft: false"))
+        self.build()
+        self.assertTrue((self.output / "writing/second-post/index.html").is_file())
+        self.assertFalse((self.output / "writing/your-next-post/index.html").exists())
+        self.assert_internal_links_resolve()
+
     def test_publish_and_retract_updates_article_home_index_rss_and_sitemap(self):
         source = self.post("a-real-note")
         self.build()
@@ -99,13 +135,16 @@ let answer = 42;
         self.assertIn('<h2 id="a-heading">A heading</h2>', article.read_text())
         self.assertIn('<code class="language-rust">', article.read_text())
         self.assertIn("A &amp; B &lt;systems&gt;", article.read_text())
-        self.assertIn('class="notebook-cover" href="/writing/a-real-note/"', (self.output / "index.html").read_text())
+        self.assertIn('class="post-row" href="/writing/a-real-note/"', (self.output / "index.html").read_text())
         self.assertIn('data-category="Systems"', (self.output / "writing/index.html").read_text())
         self.assertEqual("A & B <systems>", ET.parse(self.output / "feed.xml").findtext("channel/item/title"))
         self.assertIn("/writing/a-real-note/", (self.output / "sitemap.xml").read_text())
         indexed = json.loads((self.output / "site-index.json").read_text())["posts"]
         self.assertEqual(["/writing/a-real-note/"], [post["path"] for post in indexed])
         self.assertEqual("A & B <systems>", indexed[0]["title"])
+        self.assertIn("A useful note with a link.", indexed[0]["text"])
+        self.assertIn("let answer = 42;", indexed[0]["text"])
+        self.assertNotIn("<code", indexed[0]["text"])
         source.write_text(source.read_text().replace("draft: false", "draft: true"))
         self.build()
         self.assertFalse(article.exists())
@@ -114,6 +153,28 @@ let answer = 42;
         self.assertEqual([], ET.parse(self.output / "feed.xml").findall("channel/item"))
         self.assertNotIn("/writing/a-real-note/", (self.output / "sitemap.xml").read_text())
         self.assertEqual({"posts": []}, json.loads((self.output / "site-index.json").read_text()))
+
+    def test_search_indexes_published_prose_and_code_without_drafts_or_hidden_markup(self):
+        post = self.post("searchable-note")
+        post.write_text(post.read_text() + '\nA cache &amp; queue.\n\n```cpp\nvector<int> values[3];\n```\n\n<script>hidden_script_text</script><style>hidden_style_text</style>\n')
+        draft = self.post("private-draft", draft="true")
+        draft.write_text(draft.read_text() + '\nDRAFT_ONLY_SENTINEL\n')
+        future = self.post("future-note", published="2027-01-01")
+        future.write_text(future.read_text() + '\nFUTURE_ONLY_SENTINEL\n')
+        self.build()
+        raw_index = (self.output / "site-index.json").read_text()
+        posts = json.loads(raw_index)["posts"]
+        self.assertEqual(["searchable-note"], [item["slug"] for item in posts])
+        self.assertIn("A cache & queue.", posts[0]["text"])
+        self.assertIn("vector<int> values[3];", posts[0]["text"])
+        for hidden in ("hidden_script_text", "hidden_style_text", "DRAFT_ONLY_SENTINEL", "FUTURE_ONLY_SENTINEL"):
+            self.assertNotIn(hidden, raw_index)
+        for page in ("index.html", "writing/index.html"):
+            html = (self.output / page).read_text()
+            self.assertIn('href="/writing/searchable-note/"', html)
+            self.assertIn('id="blog-query"', html)
+            self.assertNotIn('id="memory"', html)
+            self.assertNotIn('class="hero wrap"', html)
 
     def test_youtube_launch_switch_and_invalid_post_metadata(self):
         self.build()

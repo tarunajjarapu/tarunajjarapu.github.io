@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="theme-color" content="#f6f3ec">
   <script src="/assets/js/theme.js"></script>
   <title>$title</title>
   <meta name="description" content="$description">
@@ -17,15 +17,16 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Tarun's notebook" href="/feed.xml">
   <link rel="preload" href="/assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/search.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/memory.js" defer></script>
   <script src="/assets/js/terminal.js" defer></script>
 </head>
-<body>
+<body class="$page_class">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
-    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home"><span class="brand-symbol" aria-hidden="true">[t]</span> tarun ajjarapu<span class="brand-period">_</span></a>
+    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home">Tarun Ajjarapu<span class="brand-period" aria-hidden="true">.</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">$navigation</nav>
     <div class="header-controls">
       <button class="terminal-launch" type="button" aria-label="Focus terminal" aria-controls="terminal-dock" title="Focus terminal (⌘K / Ctrl+K)" hidden><span aria-hidden="true">&gt;_</span><kbd aria-hidden="true">⌘K</kbd></button>

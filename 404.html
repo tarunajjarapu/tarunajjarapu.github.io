@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="theme-color" content="#f6f3ec">
   <script src="/assets/js/theme.js"></script>
   <title>Page not found — Tarun Ajjarapu</title>
   <meta name="description" content="This page does not exist. Navigate using the site terminal.">
@@ -18,16 +18,17 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Tarun's notebook" href="/feed.xml">
   <link rel="preload" href="/assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/search.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
-  <script src="/assets/js/memory.js" defer></script>
   <script src="/assets/js/terminal.js" defer></script>
 </head>
-<body>
+<body class="">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
-    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home"><span class="brand-symbol" aria-hidden="true">[t]</span> tarun ajjarapu<span class="brand-period">_</span></a>
-    <nav class="desktop-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/writing/">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a></nav>
+    <a class="brand" href="/" aria-label="Tarun Ajjarapu, home">Tarun Ajjarapu<span class="brand-period" aria-hidden="true">.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="/">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a></nav>
     <div class="header-controls">
       <button class="terminal-launch" type="button" aria-label="Focus terminal" aria-controls="terminal-dock" title="Focus terminal (⌘K / Ctrl+K)" hidden><span aria-hidden="true">&gt;_</span><kbd aria-hidden="true">⌘K</kbd></button>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
@@ -36,7 +37,7 @@
       </button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav"><span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Home</a><a href="/writing/">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a><a href="https://www.linkedin.com/in/tarunajj/" target="_blank" rel="noopener noreferrer">Contact ↗</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="/">Writing</a><a href="/videos/">Videos</a><a href="/about/">About</a><a href="https://www.linkedin.com/in/tarunajj/" target="_blank" rel="noopener noreferrer">Contact ↗</a></nav>
   </header>
   <main id="main"><section class="not-found wrap"><p class="eyebrow muted">404 / NOT FOUND</p><span class="not-found-star" aria-hidden="true">✳</span><h1>Page <em>not found.</em></h1><p>This path does not exist. Use the terminal or return home.</p><a class="button" href="/">Back to home <span aria-hidden="true">↗</span></a></section>
 </main>
@@ -44,14 +45,15 @@
   <div class="terminal wrap" data-terminal data-github="https://github.com/tarunajjarapu" data-linkedin="https://www.linkedin.com/in/tarunajj/">
     <div id="terminal-output-panel" class="terminal-output-panel" hidden>
       <div class="terminal-meta"><span>TERMINAL</span><span id="dock-hint" class="terminal-hint">Tab completes · ↑↓ history · Esc minimizes</span></div>
+      <p class="terminal-welcome">You can explore this site from here.</p>
       <div class="terminal-output" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" tabindex="0"></div>
-      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="help">help</button><button type="button" data-command="whoami">whoami</button><button type="button" data-command="ls writing">ls writing</button><button type="button" data-command="clear">clear</button></div>
+      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="ls"><code>ls</code><span>this page</span></button><button type="button" data-command="grep"><code>grep</code><span>search the blog</span></button><button type="button" data-command="about"><code>about</code><span>meet Tarun</span></button><button type="button" data-command="help"><code>help</code><span>all commands</span></button></div>
     </div>
     <form class="terminal-form" autocomplete="off">
       <span class="terminal-label" aria-hidden="true">&gt;_<span>terminal</span></span>
       <label class="sr-only" for="dock-command">Terminal command</label>
       <span class="terminal-path" aria-hidden="true">~</span><span class="terminal-prompt" aria-hidden="true">❯</span>
-      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="help / about / writing / videos" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
+      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="Try help, ls, or grep <text>" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
       <button class="terminal-run" type="submit" aria-label="Run command" title="Run command">↵</button>
       <kbd class="terminal-shortcut" aria-hidden="true">⌘K / Ctrl K</kbd>
       <button class="terminal-expand" type="button" aria-label="Expand terminal output" aria-expanded="false" aria-controls="terminal-output-panel"><span class="terminal-expand-label">Index</span><span class="terminal-chevron" aria-hidden="true">⌃</span></button>

@@ -2,14 +2,15 @@
   <div class="terminal wrap" data-terminal data-github="$github" data-linkedin="$linkedin">
     <div id="terminal-output-panel" class="terminal-output-panel" hidden>
       <div class="terminal-meta"><span>TERMINAL</span><span id="dock-hint" class="terminal-hint">Tab completes · ↑↓ history · Esc minimizes</span></div>
+      <p class="terminal-welcome">You can explore this site from here.</p>
       <div class="terminal-output" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" tabindex="0"></div>
-      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="help">help</button><button type="button" data-command="whoami">whoami</button><button type="button" data-command="ls writing">ls writing</button><button type="button" data-command="clear">clear</button></div>
+      <div class="terminal-suggestions" aria-label="Suggested commands"><button type="button" data-command="ls"><code>ls</code><span>this page</span></button><button type="button" data-command="grep"><code>grep</code><span>search the blog</span></button><button type="button" data-command="about"><code>about</code><span>meet Tarun</span></button><button type="button" data-command="help"><code>help</code><span>all commands</span></button></div>
     </div>
     <form class="terminal-form" autocomplete="off">
       <span class="terminal-label" aria-hidden="true">&gt;_<span>terminal</span></span>
       <label class="sr-only" for="dock-command">Terminal command</label>
       <span class="terminal-path" aria-hidden="true">~</span><span class="terminal-prompt" aria-hidden="true">❯</span>
-      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="help / about / writing / videos" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
+      <input id="dock-command" name="command" type="text" maxlength="160" placeholder="Try help, ls, or grep <text>" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="dock-hint">
       <button class="terminal-run" type="submit" aria-label="Run command" title="Run command">↵</button>
       <kbd class="terminal-shortcut" aria-hidden="true">⌘K / Ctrl K</kbd>
       <button class="terminal-expand" type="button" aria-label="Expand terminal output" aria-expanded="false" aria-controls="terminal-output-panel"><span class="terminal-expand-label">Index</span><span class="terminal-chevron" aria-hidden="true">⌃</span></button>
